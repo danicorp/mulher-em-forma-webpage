@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mulher em Forma · Treino e dieta depois dos 30</title>
+<meta name="description" content="Emagrece ganhando massa — glúteos, pernas e cintura — com treino para casa ou academia e um plano alimentar simples que cabe na sua rotina.">
+<style>
+  :root {
+    /* Paleta — extraída dos criativos/identidade da campanha (rosé + vinho) */
+    --azul: #6E1E3C;          /* vinho — cor de marca principal */
+    --azul-escuro: #3E1224;   /* texto e fundos escuros */
+    --azul-fundo: #571A31;    /* fim do gradiente escuro */
+    --azul-claro: #F6E6E7;    /* fundo de seções suaves (rosé claro) */
+    --amarelo: #E8B4B8;       /* destaque/grifo (rosé/blush) */
+    --amarelo-forte: #F0C7CC; /* destaque sobre fundo escuro */
+    --agua: #E8B4B8;
+    --verde: #6E1E3C;         /* CTA (vinho) */
+    --verde-escuro: #451026;
+    --rosa: #E8B4B8;
+    --laranja: #6E1E3C;       /* barra do topo */
+    --creme: #FBF1F1;         /* fundo do corpo */
+    --branco: #FFFFFF;
+    /* Tipografia: sans-serif elegante, self-host/system (sem @import externo) */
+    --fonte: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, system-ui, -apple-system, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    font-family: var(--fonte);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--azul-escuro);
+    background: var(--creme);
+  }
+
+  img { max-width: 100%; height: auto; display: block; }
+  ul { list-style: none; }
+
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  section { padding: 60px 0; }
+
+  /* ---------- Título com grifo ---------- */
+  section h2 {
+    font-size: clamp(1.6rem, 4vw, 2.3rem);
+    text-align: center;
+    margin-bottom: 28px;
+    color: var(--azul-escuro);
+    line-height: 1.2;
+  }
+  .grifo { background: var(--amarelo); color: var(--azul-escuro); padding: 0 8px; border-radius: 8px; }
+  .secao-escura h2 { color: var(--branco); }
+
+  /* ---------- Botões ---------- */
+  .btn {
+    display: inline-block;
+    background: var(--verde);
+    color: var(--branco);
+    font-family: var(--fonte);
+    font-weight: 800;
+    font-size: 1.15rem;
+    text-decoration: none;
+    text-align: center;
+    padding: 16px 36px;
+    border-radius: 999px;
+    box-shadow: 0 6px 0 var(--verde-escuro);
+    transition: transform .12s ease, box-shadow .12s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .btn:hover, .btn:focus-visible { transform: translateY(2px); box-shadow: 0 4px 0 var(--verde-escuro); }
+  .btn-amarelo { background: var(--amarelo); color: var(--azul-escuro); box-shadow: 0 6px 0 #D79AA0; }
+  .btn-amarelo:hover, .btn-amarelo:focus-visible { box-shadow: 0 4px 0 #D79AA0; }
+  .btn-bloco { display: block; width: 100%; }
+
+  /* ---------- Barra do topo (data de hoje via JS) ---------- */
+  .barra-oferta {
+    background: var(--laranja);
+    color: var(--branco);
+    text-align: center;
+    font-weight: 800;
+    font-size: .95rem;
+    padding: 10px 16px;
+  }
+  .barra-oferta strong { text-decoration: underline; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    background: linear-gradient(160deg, #E8B4B8 0%, #DDA0A6 60%, #CE8A92 100%);
+    color: var(--azul-escuro);
+    padding: 44px 0 60px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: clamp(1.9rem, 5.5vw, 3rem);
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .hero h1 .grifo { background: transparent; color: var(--amarelo-forte); padding: 0; }
+  .hero .sub {
+    font-size: clamp(1.05rem, 2.6vw, 1.3rem);
+    font-weight: 600;
+    max-width: 620px;
+    margin: 0 auto 28px;
+    opacity: .96;
+  }
+  .hero-banner {
+    display: block;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    filter: drop-shadow(0 16px 26px rgba(0,0,0,.35));
+    animation: flutuar 4s ease-in-out infinite;
+  }
+  @keyframes flutuar {
+    0%, 100% { translate: 0 0; }
+    50% { translate: 0 -10px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-banner { animation: none; }
+  }
+
+  /* ---------- Benefícios (cards) ---------- */
+  .beneficios { background: var(--creme); }
+  .intro-secao { text-align: center; max-width: 680px; margin: 0 auto 26px; font-weight: 600; }
+  .cards-beneficios {
+    max-width: 920px;
+    margin: 0 auto;
+    display: grid;
+    gap: 16px;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 620px) { .cards-beneficios { grid-template-columns: 1fr 1fr; } }
+  .card-beneficio {
+    background: var(--branco);
+    border-radius: 18px;
+    padding: 26px 22px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(62,18,36,.08);
+    border-top: 6px solid var(--amarelo);
+  }
+  .card-beneficio .icone {
+    display: grid;
+    place-items: center;
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 12px;
+    font-size: 1.8rem;
+    background: var(--azul-claro);
+    border-radius: 16px;
+  }
+  .card-beneficio p { font-weight: 600; }
+
+  /* ---------- Carrossel/faixa infinita ---------- */
+  .demo { background: var(--branco); }
+  .faixa {
+    overflow: hidden;
+    margin-top: 34px;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 7%, #000 93%, transparent 100%);
+  }
+  .faixa-trilho {
+    display: flex;
+    gap: 18px;
+    width: max-content;
+    padding: 4px 0 10px;
+    will-change: transform;
+  }
+  .faixa-item {
+    flex: 0 0 clamp(170px, 22vw, 280px);
+    background: var(--branco);
+    border: 2px solid #F3E3E4;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(62,18,36,.14);
+  }
+  .faixa-item img { display: block; width: 100%; }
+  .faixa-legenda {
+    padding: 10px 12px;
+    font-weight: 700;
+    font-size: .85rem;
+    text-align: center;
+    color: var(--azul-escuro);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  @media (min-width: 2200px) {
+    .faixa-item { flex-basis: clamp(300px, 14vw, 640px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .faixa { overflow-x: auto; }
+  }
+
+  /* ---------- O que vem no produto ---------- */
+  .receber { background: var(--branco); }
+  .receber-linha { display: grid; gap: 26px; max-width: 960px; margin: 0 auto; align-items: center; }
+  @media (min-width: 760px) { .receber-linha { grid-template-columns: 1fr 1fr; } }
+  .receber-figura img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 12px 20px rgba(62,18,36,.18));
+  }
+  .receber-lista li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: var(--creme);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .receber-lista li:last-child { margin-bottom: 0; }
+  .receber-lista .marca { flex: 0 0 auto; }
+
+  /* ---------- Bônus ---------- */
+  .bonus { background: var(--creme); }
+  .cards-bonus { display: grid; gap: 16px; max-width: 920px; margin: 0 auto; }
+  @media (min-width: 620px) { .cards-bonus { grid-template-columns: 1fr 1fr; } }
+  .card-bonus {
+    background: var(--branco);
+    border-radius: 18px;
+    padding: 24px 22px;
+    box-shadow: 0 4px 12px rgba(62,18,36,.08);
+    border-top: 6px solid var(--amarelo);
+  }
+  .badge-bonus {
+    display: inline-block;
+    background: var(--amarelo);
+    color: var(--azul-escuro);
+    font-weight: 800;
+    font-size: .78rem;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    padding: 4px 12px;
+    margin-bottom: 10px;
+  }
+  .card-bonus h3 { font-size: 1.08rem; color: var(--azul); margin-bottom: 6px; }
+  .card-bonus p { font-weight: 600; }
+  .card-bonus .bonus-imgs { display: flex; gap: 10px; margin-bottom: 14px; }
+  .card-bonus .bonus-imgs img {
+    width: 50%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(62,18,36,.16);
+    display: block;
+  }
+
+  /* ---------- Depoimentos (cards de avaliação) ---------- */
+  .provas { background: var(--azul-claro); }
+  .feed { display: grid; gap: 20px; max-width: 680px; margin: 0 auto; }
+  .depoimento {
+    background: var(--branco);
+    border-radius: 18px;
+    padding: 20px 22px;
+    box-shadow: 0 4px 16px rgba(62,18,36,.08);
+  }
+  .depo-topo { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .depo-avatar {
+    flex: 0 0 52px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--branco);
+    box-shadow: 0 0 0 2px #E62E7B;
+  }
+  .depo-id { display: flex; flex-direction: column; gap: 2px; }
+  .depo-nome {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: #1f1f1f;
+  }
+  .verificado {
+    display: inline-grid;
+    place-items: center;
+    width: 16px;
+    height: 16px;
+    background: #1D9BF0;
+    color: #fff;
+    font-size: 10px;
+    border-radius: 50%;
+    line-height: 1;
+  }
+  .depo-estrelas { color: #E62E7B; letter-spacing: 3px; font-size: 1rem; }
+  .depo-texto { font-size: 1rem; line-height: 1.6; color: #2b2b2b; font-weight: 500; }
+
+  /* ---------- Oferta ---------- */
+  .oferta { background: linear-gradient(170deg, var(--azul-escuro) 0%, var(--azul-fundo) 100%); color: var(--branco); }
+  .planos { display: grid; gap: 20px; max-width: 460px; margin: 0 auto; }
+  .plano {
+    background: var(--branco);
+    color: var(--azul-escuro);
+    border-radius: 22px;
+    padding: 32px 28px;
+    text-align: center;
+    box-shadow: 0 14px 30px rgba(0,0,0,.3);
+    display: flex;
+    flex-direction: column;
+    border: 4px solid var(--amarelo);
+  }
+  .plano h3 { color: var(--azul); font-size: 1.3rem; margin-bottom: 6px; }
+  .plano .preco { line-height: 1.1; }
+  .plano .preco .preco-de { display: block; font-size: 1.15rem; font-weight: 700; color: #B98A93; text-decoration: line-through; }
+  .plano .preco .preco-atual { display: block; font-size: 2.9rem; font-weight: 800; color: var(--azul-escuro); }
+  .plano .preco small { font-size: .95rem; font-weight: 600; color: #8A6070; }
+  .plano .conteudo { margin: 16px 0 22px; text-align: left; }
+  .plano .conteudo li { padding: 6px 0 6px 30px; font-weight: 600; position: relative; }
+  .plano .conteudo li::before {
+    content: "✓";
+    position: absolute;
+    left: 0; top: 5px;
+    width: 20px; height: 20px;
+    background: var(--verde);
+    color: var(--branco);
+    border-radius: 50%;
+    font-size: .75rem;
+    font-weight: 800;
+    display: grid;
+    place-items: center;
+  }
+  .plano .btn { margin-top: auto; }
+  .nota-pagamento { text-align: center; margin-top: 24px; font-weight: 700; }
+
+  /* ---------- Garantia ---------- */
+  .garantia-card {
+    max-width: 760px;
+    margin: 0 auto;
+    background: var(--branco);
+    border-radius: 20px;
+    padding: 32px 28px;
+    display: grid;
+    gap: 22px;
+    align-items: center;
+    box-shadow: 0 4px 14px rgba(62,18,36,.1);
+    border: 3px solid var(--verde);
+    text-align: left;
+  }
+  @media (min-width: 640px) { .garantia-card { grid-template-columns: auto 1fr; } }
+  .garantia-card .selo-dias {
+    justify-self: center;
+    flex: 0 0 120px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--verde);
+    color: var(--branco);
+    display: grid;
+    place-items: center;
+    text-align: center;
+    line-height: 1.05;
+    box-shadow: 0 0 0 6px #F6E6E7;
+  }
+  .garantia-card .selo-dias .num { font-size: 2.4rem; font-weight: 800; }
+  .garantia-card .selo-dias .rotulo { font-size: .85rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
+  .garantia-card h2 { text-align: left; margin-bottom: 10px; font-size: 1.5rem; color: var(--azul-escuro); }
+  .garantia-card p { font-weight: 600; }
+  .garantia-card .condicoes { margin-top: 10px; font-size: .95rem; color: #7A5563; font-weight: 400; }
+
+  /* ---------- FAQ ---------- */
+  .faq { background: var(--creme); }
+  .faq details {
+    max-width: 760px;
+    margin: 0 auto 12px;
+    background: var(--branco);
+    border-radius: 14px;
+    padding: 16px 18px;
+    box-shadow: 0 2px 8px rgba(62,18,36,.06);
+  }
+  .faq summary {
+    font-weight: 800;
+    color: var(--azul-escuro);
+    cursor: pointer;
+    font-size: 1.02rem;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .faq summary::after { content: "＋"; font-size: 1.3rem; color: var(--azul); flex: 0 0 auto; }
+  .faq details[open] summary::after { content: "－"; }
+  .faq details p { margin-top: 10px; font-weight: 600; }
+
+  /* ---------- Ajustes de acesso ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn { transition: none; }
+  }
+</style>
+
+<!-- ============ META PIXEL (base) ============ -->
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(s,t)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1928523718115347');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1928523718115347&ev=PageView&noscript=1" alt=""></noscript>
+</head>
+<body>
+
+<!-- ============ BARRA DO TOPO (data de hoje via JS) ============ -->
+<div class="barra-oferta">⚠ Oferta válida até <strong id="data-oferta">hoje</strong></div>
+
+<!-- ============ 1. HERO ============ -->
+<header class="hero secao-escura">
+  <div class="container">
+    <h1>Depois dos 30, treino e dieta certos</h1>
+    <p class="sub">Emagrece ganhando massa — glúteos, pernas e cintura — com treino para casa ou academia e um plano alimentar simples que cabe na sua rotina.</p>
+    <img class="hero-banner" src="imagens/mockup.webp" alt="Mockup do guia Mulher em Forma, com capa e páginas internas de treino, dieta e receitas" width="1280" height="853" loading="eager">
+    <p><a class="btn" href="#oferta">Quero começar agora</a></p>
+  </div>
+</header>
+
+<!-- ============ 2. CARROSSEL: POR DENTRO DO PRODUTO ============ -->
+<section class="demo">
+  <div class="container">
+    <h2><span class="grifo">Por dentro</span> do guia Mulher em Forma</h2>
+  </div>
+  <div class="faixa">
+    <ul class="faixa-trilho">
+      <!-- bloco A, acessível -->
+      <li class="faixa-item">
+        <img src="imagens/produto-01.webp" alt="Capa do guia Mulher em Forma" width="420" height="594" loading="lazy">
+        <p class="faixa-legenda">Capa do guia</p>
+      </li>
+      <li class="faixa-item">
+        <img src="imagens/produto-07.webp" alt="Página sobre proteína na dieta" width="420" height="594" loading="lazy">
+        <p class="faixa-legenda">Proteína na dieta</p>
+      </li>
+      <li class="faixa-item">
+        <img src="imagens/produto-09.webp" alt="Exemplo de um dia de refeições" width="420" height="594" loading="lazy">
+        <p class="faixa-legenda">Exemplo de um dia</p>
+      </li>
+      <li class="faixa-item">
+        <img src="imagens/produto-16.webp" alt="Treino A em casa" width="420" height="594" loading="lazy">
+        <p class="faixa-legenda">Treino A em casa</p>
+      </li>
+      <li class="faixa-item">
+        <img src="imagens/produto-20.webp" alt="Treino A na academia" width="420" height="594" loading="lazy">
+        <p class="faixa-legenda">Treino A na academia</p>
+      </li>
+      <li class="faixa-item">
+        <img src="imagens/produto-33.webp" alt="Checklist da semana" width="420" height="594" loading="lazy">
+        <p class="faixa-legenda">Checklist da semana</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 3. BENEFÍCIOS ============ -->
+<section class="beneficios">
+  <div class="container">
+    <h2>Por que funciona depois dos 30</h2>
+    <p class="intro-secao">Depois dos 30 o corpo muda de estratégia — e o plano também precisa mudar. Aqui é método, não sorte.</p>
+    <div class="cards-beneficios">
+      <div class="card-beneficio">
+        <span class="icone" aria-hidden="true">🍽️</span>
+        <p>Dieta de emagrecimento que preserva a massa: você emagrece ganhando forma, não só perdendo peso.</p>
+      </div>
+      <div class="card-beneficio">
+        <span class="icone" aria-hidden="true">🍗</span>
+        <p>Proteína em cada refeição — o que segura o músculo enquanto você emagrece.</p>
+      </div>
+      <div class="card-beneficio">
+        <span class="icone" aria-hidden="true">🏠</span>
+        <p>Treino completo para casa E para academia: você escolhe onde treinar.</p>
+      </div>
+      <div class="card-beneficio">
+        <span class="icone" aria-hidden="true">🎯</span>
+        <p>Treino por zona — glúteos, pernas e cintura — nada de treino genérico.</p>
+      </div>
+      <div class="card-beneficio">
+        <span class="icone" aria-hidden="true">📅</span>
+        <p>Plano de 4 semanas com progressão: você sabe o que fazer em cada dia.</p>
+      </div>
+      <div class="card-beneficio">
+        <span class="icone" aria-hidden="true">⏱️</span>
+        <p>40 minutos, 4 vezes por semana: método que cabe na rotina corrida.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. DEPOIMENTOS (fictícios até haver reais autorizados) ============ -->
+<section class="provas">
+  <div class="container">
+    <h2>Quem já começou o método</h2>
+    <div class="feed">
+      <article class="depoimento">
+        <div class="depo-topo">
+          <img class="depo-avatar" src="imagens/depo-02.webp" alt="Foto de Alessandra" width="52" height="52" loading="lazy">
+          <div class="depo-id">
+            <span class="depo-nome">Alessandra <span class="verificado" aria-hidden="true">✓</span></span>
+            <span class="depo-estrelas" aria-label="5 de 5 estrelas">★★★★★</span>
+          </div>
+        </div>
+        <p class="depo-texto">"Aos 38, recém-divorciada, eu precisava voltar a me sentir bem comigo mesma 😍 Comecei o treino e a dieta e em poucas semanas já sentia o corpo respondendo — glúteos, pernas e cintura. Hoje tenho muito mais disposição e autoestima do que tinha nos meus 25! 🥹✨"</p>
+      </article>
+      <article class="depoimento">
+        <div class="depo-topo">
+          <img class="depo-avatar" src="imagens/depo-01.webp" alt="Foto de Manu" width="52" height="52" loading="lazy">
+          <div class="depo-id">
+            <span class="depo-nome">Manu <span class="verificado" aria-hidden="true">✓</span></span>
+            <span class="depo-estrelas" aria-label="5 de 5 estrelas">★★★★★</span>
+          </div>
+        </div>
+        <p class="depo-texto">"Comprei o Mulher em Forma de presente pra minha mãe, que nunca cuidou da alimentação. Hoje ela não perde um dia kkkkkk Ver ela tão motivada valeu cada centavo — foi o melhor presente que eu poderia ter dado! ❤️"</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. O QUE VEM NO PRODUTO ============ -->
+<section class="receber">
+  <div class="container">
+    <h2>O que você recebe</h2>
+    <div class="receber-linha">
+      <div class="receber-figura">
+        <img src="imagens/mockup.webp" alt="Mockup do guia Mulher em Forma, com capa e páginas internas de treino, dieta e receitas" width="1280" height="853" loading="lazy">
+      </div>
+      <ul class="receber-lista">
+        <li><span class="marca" aria-hidden="true">✅</span> Guia Mulher em Forma: nutrição para emagrecer com massa + treinos A/B/C/D (casa e academia).</li>
+        <li><span class="marca" aria-hidden="true">✅</span> Plano alimentar com exemplos do dia a dia e os erros que travam o emagrecimento.</li>
+        <li><span class="marca" aria-hidden="true">✅</span> Progressão em 4 semanas e checklist para acompanhar seu ritmo.</li>
+        <li><span class="marca" aria-hidden="true">✅</span> Envio imediato após a confirmação do pagamento.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. BÔNUS (reais) ============ -->
+<section class="bonus">
+  <div class="container">
+    <h2>E ainda vão 4 bônus</h2>
+    <div class="cards-bonus">
+      <div class="card-bonus">
+        <div class="bonus-imgs">
+          <img src="imagens/bonus1-01.webp" alt="Capa do Plano de treino imprimível" width="900" height="1272" loading="lazy">
+          <img src="imagens/bonus1-04.webp" alt="Tabela do Treino A com coluna de cargas para anotar" width="900" height="1272" loading="lazy">
+        </div>
+        <span class="badge-bonus">Bônus 1</span>
+        <h3>Plano de treino imprimível</h3>
+        <p>Tabelas dos 4 treinos (casa e academia), coluna de cargas e grade de progressão, para pendurar na parede.</p>
+      </div>
+      <div class="card-bonus">
+        <div class="bonus-imgs">
+          <img src="imagens/bonus2-01.webp" alt="Capa do Livro de receitas" width="900" height="1272" loading="lazy">
+          <img src="imagens/bonus2-08.webp" alt="Receita de frango grelhado com quinoa e salada" width="900" height="1272" loading="lazy">
+        </div>
+        <span class="badge-bonus">Bônus 2</span>
+        <h3>Livro de receitas</h3>
+        <p>22 receitas simples com proteína para café da manhã, almoço, jantar e lanches.</p>
+      </div>
+      <div class="card-bonus">
+        <div class="bonus-imgs">
+          <img src="imagens/bonus3-01.webp" alt="Capa do Guia de alongamento" width="900" height="1272" loading="lazy">
+          <img src="imagens/bonus3-07.webp" alt="Página de alongamento de quadril" width="900" height="1272" loading="lazy">
+        </div>
+        <span class="badge-bonus">Bônus 3</span>
+        <h3>Guia de alongamento</h3>
+        <p>Rotina de 10 minutos para os dias de descanso e para o pós-treino.</p>
+      </div>
+      <div class="card-bonus">
+        <div class="bonus-imgs">
+          <img src="imagens/bonus4-01.webp" alt="Capa do Guia Anti-Inflamatório" width="900" height="1272" loading="lazy">
+          <img src="imagens/bonus4-04.webp" alt="Página Comida de verdade do Guia Anti-Inflamatório" width="900" height="1272" loading="lazy">
+        </div>
+        <span class="badge-bonus">Bônus 4</span>
+        <h3>Guia Anti-Inflamatório</h3>
+        <p>Comida de verdade, sono e menos estresse: um guia educativo para a recuperação (sem alegação terapêutica).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. OFERTA (plano único) ============ -->
+<section class="oferta secao-escura" id="oferta">
+  <div class="container">
+    <h2>Comece hoje o Mulher em Forma</h2>
+    <div class="planos">
+      <div class="plano">
+        <h3>Pacote completo</h3>
+        <p class="preco"><span class="preco-de">de R$ 89,90</span><span class="preco-atual">R$ 67</span><small>valor promocional · pagamento único</small></p>
+        <ul class="conteudo">
+          <li>Guia Mulher em Forma (treino + dieta)</li>
+          <li>Bônus 1: Plano de treino imprimível</li>
+          <li>Bônus 2: Livro de receitas (22 receitas)</li>
+          <li>Bônus 3: Guia de alongamento</li>
+          <li>Bônus 4: Guia Anti-Inflamatório</li>
+          <li>Envio imediato</li>
+        </ul>
+        <a class="btn btn-bloco" href="https://ggcheckout.app/checkout/v5/Wknm3Cz7GNKQ7vFK48qZJ1" data-checkout="plano1" data-checkout-nome="Pacote completo" data-checkout-valor="67">Quero o pacote completo</a>
+      </div>
+    </div>
+    <p class="nota-pagamento">Pagamento único. Acesso imediato a todo o material após a confirmação.</p>
+  </div>
+</section>
+
+<!-- ============ 8. GARANTIA (7 dias, real) ============ -->
+<section>
+  <div class="container">
+    <div class="garantia-card">
+      <div class="selo-dias" aria-hidden="true">
+        <div><span class="num">7</span><br><span class="rotulo">dias</span></div>
+      </div>
+      <div>
+        <h2>7 dias de garantia</h2>
+        <p>Você tem 7 dias para conhecer todo o material. Se não fizer sentido para você, é só pedir o reembolso.</p>
+        <p class="condicoes">Garantia de 7 dias, conforme o direito de arrependimento (CDC, Art. 49). Reembolso integral mediante solicitação dentro do prazo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. FAQ (a página termina aqui — sem rodapé) ============ -->
+<section class="faq">
+  <div class="container">
+    <h2>Perguntas frequentes</h2>
+    <details>
+      <summary>Como recebo o material?</summary>
+      <p>Assim que o pagamento é confirmado, você recebe o acesso por e-mail. Todo o material é digital e você acessa na hora.</p>
+    </details>
+    <details>
+      <summary>Preciso de academia?</summary>
+      <p>Não. O guia traz treinos completos para fazer em casa (só elástico e halteres) e também a versão para academia — você escolhe a que combina com a sua rotina.</p>
+    </details>
+    <details>
+      <summary>Serve para quem já treina há anos?</summary>
+      <p>Sim. O plano tem progressão em 4 semanas e é pensado para depois dos 30: funciona tanto para quem está recomeçando quanto para quem já treina e quer método.</p>
+    </details>
+    <details>
+      <summary>É uma dieta restritiva?</summary>
+      <p>Não. O plano é sobre proteína em cada refeição e comida de verdade, sem cortar grupos de alimentos nem passar fome.</p>
+    </details>
+    <details>
+      <summary>Como funciona o pagamento?</summary>
+      <p>Pagamento único de R$ 67. Você recebe todo o material e os 4 bônus, com acesso imediato após a confirmação.</p>
+    </details>
+    <details>
+      <summary>E se eu não gostar?</summary>
+      <p>Você tem 7 dias de garantia. Se não fizer sentido, é só pedir o reembolso dentro do prazo.</p>
+    </details>
+  </div>
+</section>
+
+<!-- ============ DATA DA OFERTA (JS) ============ -->
+<script>
+  (function () {
+    var alvo = document.getElementById('data-oferta');
+    if (!alvo) return;
+    alvo.textContent = new Date().toLocaleDateString('pt-BR');
+  })();
+</script>
+
+<!-- ============ EVENTOS DA PÁGINA (ViewContent + InitiateCheckout) ============ -->
+<script>
+  (function () {
+    var PARAMETROS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid'];
+    var chegada = new URLSearchParams(window.location.search);
+
+    document.querySelectorAll('a[data-checkout]').forEach(function (botao) {
+      var destino = new URL(botao.getAttribute('href'));
+      PARAMETROS.forEach(function (nome) {
+        var valor = chegada.get(nome);
+        if (valor) destino.searchParams.set(nome, valor);
+      });
+      botao.setAttribute('href', destino.toString());
+
+      botao.addEventListener('click', function () {
+        if (typeof fbq !== 'function') return;
+        fbq('track', 'InitiateCheckout', {
+          content_name: botao.getAttribute('data-checkout-nome'),
+          content_type: 'product',
+          currency: 'BRL',
+          value: parseFloat(botao.getAttribute('data-checkout-valor'))
+        });
+      });
+    });
+
+    var demo = document.querySelector('.demo');
+    if (!demo || typeof fbq !== 'function' || !('IntersectionObserver' in window)) return;
+    var enviado = false;
+    new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (entrada) {
+        if (enviado || !entrada.isIntersecting) return;
+        enviado = true;
+        fbq('track', 'ViewContent', {
+          content_name: 'Mulher em Forma',
+          content_type: 'product'
+        });
+      });
+    }, { threshold: 0.5 }).observe(demo);
+  })();
+</script>
+
+<!-- ============ CARROSSEL INFINITO (JS) ============
+     Move o trilho continuamente e, ao percorrer uma cópia inteira, reseta
+     exatamente um período — loop infinito, sem fim e sem vazio, em velocidade
+     constante. Pausa no hover; respeita prefers-reduced-motion (aí vira faixa
+     estática rolável via CSS). -->
+<script>
+  (function () {
+    var track = document.querySelector('.faixa-trilho');
+    var viewport = document.querySelector('.faixa');
+    if (!track || !viewport) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var originals = Array.prototype.slice.call(track.children);
+    if (!originals.length) return;
+
+    var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    var period = track.scrollWidth + gap; // uma cópia completa + o gap que a segue
+    var vw = viewport.clientWidth;
+
+    function appendCopy() {
+      var frag = document.createDocumentFragment();
+      originals.forEach(function (node) {
+        var c = node.cloneNode(true);
+        c.setAttribute('aria-hidden', 'true');
+        var img = c.querySelector('img');
+        if (img) img.setAttribute('alt', '');
+        frag.appendChild(c);
+      });
+      track.appendChild(frag);
+    }
+
+    // garante trilha >= viewport + period (nunca mostra vazio na virada)
+    function garantir() {
+      while (track.scrollWidth < vw + period) appendCopy();
+    }
+    garantir();
+    window.addEventListener('resize', function () {
+      vw = viewport.clientWidth;
+      garantir();
+    });
+
+    var x = 0, speed = 35, last = null, paused = false;
+    viewport.addEventListener('mouseenter', function () { paused = true; });
+    viewport.addEventListener('mouseleave', function () { paused = false; });
+
+    function step(ts) {
+      if (last === null) last = ts;
+      var dt = Math.min((ts - last) / 1000, 0.064);
+      last = ts;
+      if (!paused) {
+        x -= speed * dt;
+        if (-x >= period) x += period;
+        track.style.transform = 'translateX(' + x + 'px)';
+      }
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  })();
+</script>
+
+</body>
+</html>
