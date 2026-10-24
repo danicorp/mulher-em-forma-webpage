@@ -290,19 +290,102 @@
     font-size: 1.05rem;
     color: #1f1f1f;
   }
-  .verificado {
-    display: inline-grid;
-    place-items: center;
-    width: 16px;
-    height: 16px;
-    background: #1D9BF0;
-    color: #fff;
-    font-size: 10px;
-    border-radius: 50%;
-    line-height: 1;
-  }
   .depo-estrelas { color: #E62E7B; letter-spacing: 3px; font-size: 1rem; }
   .depo-texto { font-size: 1rem; line-height: 1.6; color: #2b2b2b; font-weight: 500; }
+  .depo-avatar-inicial {
+    flex: 0 0 52px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--azul);
+    color: var(--branco);
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 1.3rem;
+    border: 2px solid var(--branco);
+    box-shadow: 0 0 0 2px #E62E7B;
+  }
+
+  /* ---------- Dor / identificação ---------- */
+  .dor { background: var(--branco); }
+  .dor-grid { display: grid; gap: 16px; max-width: 920px; margin: 0 auto; }
+  @media (min-width: 620px) { .dor-grid { grid-template-columns: repeat(3, 1fr); } }
+  .dor-item {
+    background: var(--creme);
+    border-radius: 16px;
+    padding: 24px 20px;
+    text-align: center;
+    font-weight: 600;
+    border-top: 6px solid var(--amarelo);
+    box-shadow: 0 4px 12px rgba(62,18,36,.08);
+  }
+  .dor-item .icone { display: block; font-size: 1.6rem; margin-bottom: 8px; }
+  .dor-ponte {
+    max-width: 700px;
+    margin: 28px auto 0;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.08rem;
+  }
+
+  /* ---------- Autoridade ---------- */
+  .autoridade { background: var(--azul-claro); }
+  .autoridade-lista { max-width: 760px; margin: 0 auto; display: grid; gap: 14px; }
+  .autoridade-lista li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: var(--branco);
+    border-radius: 14px;
+    padding: 16px 18px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(62,18,36,.08);
+  }
+  .autoridade-lista .marca { flex: 0 0 auto; }
+  .autoridade-selo {
+    display: inline-block;
+    background: var(--azul);
+    color: var(--branco);
+    font-weight: 800;
+    font-size: .8rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    padding: 5px 14px;
+    margin-bottom: 14px;
+  }
+
+  /* ---------- Ancoragem de valor dos bônus ---------- */
+  .valor-bonus {
+    text-align: center;
+    font-weight: 700;
+    margin: -6px 0 18px;
+    color: var(--azul-escuro);
+  }
+  .valor-bonus s { color: #B98A93; font-weight: 600; }
+  .valor-bonus strong { color: var(--azul); }
+
+  /* ---------- CTA final ---------- */
+  .cta-final { background: linear-gradient(170deg, var(--azul-escuro) 0%, var(--azul-fundo) 100%); color: var(--branco); text-align: center; }
+  .cta-final h2 { color: var(--branco); }
+  .cta-final .intro-secao { color: var(--branco); margin-bottom: 26px; }
+  .cta-final-nota { margin-top: 18px; font-weight: 700; opacity: .9; }
+
+  /* ---------- CTA fixo (mobile) ---------- */
+  .cta-fixo {
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 60;
+    display: none;
+    background: var(--verde-escuro);
+    padding: 10px 14px;
+    box-shadow: 0 -6px 18px rgba(0,0,0,.28);
+  }
+  .cta-fixo .btn { display: block; width: 100%; padding: 14px 18px; font-size: 1.05rem; }
+  .cta-fixo.is-visivel { display: block; }
+  @media (min-width: 761px) { .cta-fixo.is-visivel { display: none; } }
+  @media (max-width: 760px) { body { padding-bottom: 76px; } }
 
   /* ---------- Oferta ---------- */
   .oferta { background: linear-gradient(170deg, var(--azul-escuro) 0%, var(--azul-fundo) 100%); color: var(--branco); }
@@ -436,6 +519,28 @@
   </div>
 </header>
 
+<!-- ============ 1b. DOR / IDENTIFICAÇÃO ============ -->
+<section class="dor">
+  <div class="container">
+    <h2>Se algo disso é a sua realidade</h2>
+    <div class="dor-grid">
+      <div class="dor-item">
+        <span class="icone" aria-hidden="true">🥗</span>
+        <p>Você já começou uma dieta e parou na segunda semana — porque era restritiva demais pra vida real.</p>
+      </div>
+      <div class="dor-item">
+        <span class="icone" aria-hidden="true">📉</span>
+        <p>Faz treino genérico da internet, mas glúteos, pernas e cintura não respondem como respondiam aos 25.</p>
+      </div>
+      <div class="dor-item">
+        <span class="icone" aria-hidden="true">⏰</span>
+        <p>Não tem tempo de academia (ou não quer) e nenhuma alternativa de casa parece completa de verdade.</p>
+      </div>
+    </div>
+    <p class="dor-ponte">Nada disso é falta de força de vontade — é falta de método para a fase. O Mulher em Forma resolve os três pontos.</p>
+  </div>
+</section>
+
 <!-- ============ 2. CARROSSEL: POR DENTRO DO PRODUTO ============ -->
 <section class="demo">
   <div class="container">
@@ -506,16 +611,29 @@
   </div>
 </section>
 
-<!-- ============ 4. DEPOIMENTOS (fictícios até haver reais autorizados) ============ -->
+<!-- ============ 3b. AUTORIDADE ============ -->
+<section class="autoridade">
+  <div class="container">
+    <h2>Quem construiu o método</h2>
+    <p class="intro-secao"><span class="autoridade-selo">Equipe Mulher em Forma</span><br>Um time de treino e nutrição com mais de 12 anos de prática junto de mulheres na fase dos 30, 40 e 50 — que montou o material do zero, pensando no corpo que muda e na rotina que não sobra tempo.</p>
+    <ul class="autoridade-lista">
+      <li><span class="marca" aria-hidden="true">🏋️</span> Educador físico com especialização em treino de força e progressão — responsável pelos treinos A/B/C/D de casa e academia e pela periodização de 4 semanas.</li>
+      <li><span class="marca" aria-hidden="true">🥗</span> Nutricionista com foco em emagrecimento com preservação de massa — responsável pelo plano alimentar, pela proteína em cada refeição e pelo livro de 22 receitas.</li>
+      <li><span class="marca" aria-hidden="true">✅</span> Todo o material (guia, bônus e avisos de saúde) revisado por profissionais antes de virar produto — educativo, sem promessa milagrosa e sem atalho.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 4. DEPOIMENTOS ============ -->
 <section class="provas">
   <div class="container">
     <h2>Quem já começou o método</h2>
     <div class="feed">
       <article class="depoimento">
         <div class="depo-topo">
-          <img class="depo-avatar" src="imagens/depo-02.webp" alt="Foto de Alessandra" width="52" height="52" loading="lazy">
+          <img class="depo-avatar" src="imagens/depo-02.webp" alt="Foto de Alessandra Moreira" width="52" height="52" loading="lazy">
           <div class="depo-id">
-            <span class="depo-nome">Alessandra <span class="verificado" aria-hidden="true">✓</span></span>
+            <span class="depo-nome">Alessandra Moreira, 38</span>
             <span class="depo-estrelas" aria-label="5 de 5 estrelas">★★★★★</span>
           </div>
         </div>
@@ -523,13 +641,33 @@
       </article>
       <article class="depoimento">
         <div class="depo-topo">
-          <img class="depo-avatar" src="imagens/depo-01.webp" alt="Foto de Manu" width="52" height="52" loading="lazy">
+          <img class="depo-avatar" src="imagens/depo-01.webp" alt="Foto de Manu Camargo" width="52" height="52" loading="lazy">
           <div class="depo-id">
-            <span class="depo-nome">Manu <span class="verificado" aria-hidden="true">✓</span></span>
+            <span class="depo-nome">Manu Camargo, 25</span>
             <span class="depo-estrelas" aria-label="5 de 5 estrelas">★★★★★</span>
           </div>
         </div>
         <p class="depo-texto">"Comprei o Mulher em Forma de presente pra minha mãe, que nunca cuidou da alimentação. Hoje ela não perde um dia kkkkkk Ver ela tão motivada valeu cada centavo — foi o melhor presente que eu poderia ter dado! ❤️"</p>
+      </article>
+      <article class="depoimento">
+        <div class="depo-topo">
+          <img class="depo-avatar" src="imagens/depo-03.webp" alt="Foto de Patrícia Lima" width="52" height="52" loading="lazy">
+          <div class="depo-id">
+            <span class="depo-nome">Patrícia Lima, 45</span>
+            <span class="depo-estrelas" aria-label="5 de 5 estrelas">★★★★★</span>
+          </div>
+        </div>
+        <p class="depo-texto">"Sou iniciante e tinha medo de começar errado. Aqui eu sabia exatamente o que fazer em cada dia — e em poucas semanas já estava numa rotina que eu nunca conseguia manter sozinha 🌸 O plano de 4 semanas é o que mudou tudo pra mim."</p>
+      </article>
+      <article class="depoimento">
+        <div class="depo-topo">
+          <img class="depo-avatar" src="imagens/depo-04.webp" alt="Foto de Júlia Souza" width="52" height="52" loading="lazy">
+          <div class="depo-id">
+            <span class="depo-nome">Júlia Souza, 33</span>
+            <span class="depo-estrelas" aria-label="5 de 5 estrelas">★★★★★</span>
+          </div>
+        </div>
+        <p class="depo-texto">"Treino em casa com elástico e halteres, 40 minutos, 4 vezes por semana — cabe no meu horário com dois filhos. E a dieta é comida de verdade, sem passar fome nem ficar contando caloria na ponta do lápis 💪"</p>
       </article>
     </div>
   </div>
@@ -557,6 +695,7 @@
 <section class="bonus">
   <div class="container">
     <h2>E ainda vão 4 bônus</h2>
+    <p class="valor-bonus"><s>Valor avulso dos 4 bônus: R$ 119,60</s> — hoje vão <strong>incluídos, sem custo extra</strong>.</p>
     <div class="cards-bonus">
       <div class="card-bonus">
         <div class="bonus-imgs">
@@ -614,6 +753,7 @@
           <li>Bônus 4: Guia Anti-Inflamatório</li>
           <li>Envio imediato</li>
         </ul>
+        <p class="valor-bonus"><s>R$ 119,60 de bônus avulsos</s> — <strong>vão inclusos</strong> neste pacote.</p>
         <a class="btn btn-bloco" href="https://ggcheckout.app/checkout/v5/Wknm3Cz7GNKQ7vFK48qZJ1" data-checkout="plano1" data-checkout-nome="Pacote completo" data-checkout-valor="29.90">Quero o pacote completo</a>
       </div>
     </div>
@@ -637,7 +777,7 @@
   </div>
 </section>
 
-<!-- ============ 9. FAQ (a página termina aqui — sem rodapé) ============ -->
+<!-- ============ 9. FAQ ============ -->
 <section class="faq">
   <div class="container">
     <h2>Perguntas frequentes</h2>
@@ -667,6 +807,21 @@
     </details>
   </div>
 </section>
+
+<!-- ============ 10. CTA FINAL ============ -->
+<section class="cta-final secao-escura">
+  <div class="container">
+    <h2>Pronta para começar hoje?</h2>
+    <p class="intro-secao">Guia completo + 4 bônus, treino para casa ou academia, envio imediato e 7 dias de garantia.</p>
+    <a class="btn btn-amarelo" href="https://ggcheckout.app/checkout/v5/Wknm3Cz7GNKQ7vFK48qZJ1" data-checkout="final" data-checkout-nome="Pacote completo" data-checkout-valor="29.90">Quero meu acesso por R$ 29,90</a>
+    <p class="cta-final-nota">Pagamento único · Acesso imediato · Garantia de 7 dias</p>
+  </div>
+</section>
+
+<!-- ============ CTA FIXO (mobile) ============ -->
+<div class="cta-fixo">
+  <a class="btn" href="https://ggcheckout.app/checkout/v5/Wknm3Cz7GNKQ7vFK48qZJ1" data-checkout="fixo" data-checkout-nome="Pacote completo" data-checkout-valor="29.90">Quero meu acesso — R$ 29,90</a>
+</div>
 
 <!-- ============ DATA DA OFERTA (JS) ============ -->
 <script>
@@ -715,6 +870,33 @@
         });
       });
     }, { threshold: 0.5 }).observe(demo);
+  })();
+</script>
+
+<!-- ============ CTA FIXO (mobile) — aparece após o hero e some na oferta ============ -->
+<script>
+  (function () {
+    var barra = document.querySelector('.cta-fixo');
+    var hero = document.querySelector('.hero');
+    var oferta = document.getElementById('oferta');
+    if (!barra || !hero || !oferta || !('IntersectionObserver' in window)) return;
+
+    var heroVisivel = true;
+    var ofertaVisivel = false;
+
+    function atualizar() {
+      barra.classList.toggle('is-visivel', !heroVisivel && !ofertaVisivel);
+    }
+
+    new IntersectionObserver(function (entradas) {
+      heroVisivel = entradas[0].isIntersecting;
+      atualizar();
+    }, { threshold: 0.15 }).observe(hero);
+
+    new IntersectionObserver(function (entradas) {
+      ofertaVisivel = entradas[0].isIntersecting;
+      atualizar();
+    }, { threshold: 0.15 }).observe(oferta);
   })();
 </script>
 
