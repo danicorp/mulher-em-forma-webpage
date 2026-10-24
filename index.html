@@ -77,7 +77,7 @@
   .btn-amarelo:hover, .btn-amarelo:focus-visible { box-shadow: 0 4px 0 #D79AA0; }
   .btn-bloco { display: block; width: 100%; }
 
-  /* ---------- Barra do topo (data de hoje via JS) ---------- */
+  /* ---------- Barra do topo (data de hoje + 2 dias via JS) ---------- */
   .barra-oferta {
     background: var(--laranja);
     color: var(--branco);
@@ -505,7 +505,7 @@
 </head>
 <body>
 
-<!-- ============ BARRA DO TOPO (data de hoje via JS) ============ -->
+<!-- ============ BARRA DO TOPO (data de hoje + 2 dias via JS) ============ -->
 <div class="barra-oferta">⚠ Oferta válida até <strong id="data-oferta">hoje</strong></div>
 
 <!-- ============ 1. HERO ============ -->
@@ -828,7 +828,9 @@
   (function () {
     var alvo = document.getElementById('data-oferta');
     if (!alvo) return;
-    alvo.textContent = new Date().toLocaleDateString('pt-BR');
+    var fim = new Date();
+    fim.setDate(fim.getDate() + 2);
+    alvo.textContent = fim.toLocaleDateString('pt-BR');
   })();
 </script>
 
